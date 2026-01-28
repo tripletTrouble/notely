@@ -1,4 +1,5 @@
-import { Dexie, type EntityTable } from "dexie";
+import Dexie from "dexie";
+import type { EntityTable } from "dexie";
 
 interface Transaction {
   id?: number;
