@@ -41,6 +41,5 @@ export default defineNuxtConfig({
         },
       ],
     },
-    includeAssets: ["notely.webp"],
   },
 });
