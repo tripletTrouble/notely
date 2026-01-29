@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const {$pwa} = useNuxtApp();
+
 useHead({
   title: 'Notely',
   meta: [
@@ -9,7 +11,11 @@ useHead({
     { rel: 'apple-touch-icon', type: 'image/webp', href: '/apple-touch-icon.webp' },
   ],
 })
-const toaster: { position: "top-right" } = { position: 'top-right' }
+const toaster: { position: "top-right" } = { position: 'top-right' };
+
+onMounted(() => {
+  console.log('PWA is enabled:', $pwa);
+});
 </script>
 
 <template>

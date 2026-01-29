@@ -1,23 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
+  ssr: false,
+  nitro: {
+    preset: "static"
+  },
   devtools: { enabled: true },
   modules: ["@nuxt/ui", "@nuxt/image", "@nuxt/fonts", "@vite-pwa/nuxt"],
   css: ["@/assets/css/main.css"],
-  ssr: false,
   pwa: {
     registerType: "autoUpdate",
+    includeAssets: ["apple-touch-icon.png", "notely.webp"],
     workbox: {
       cleanupOutdatedCaches: true,
       globPatterns: ["**/*.{js,css,html,png,svg,webp}"],
-      navigateFallback: "/",
+      navigateFallback: "/index.html",
       navigateFallbackAllowlist: [/^\/$/, /^\/.+/],
-      runtimeCaching: [
-        {
-          urlPattern: /.*/,
-          handler: "CacheFirst",
-        },
-      ],
     },
     manifest: {
       name: "Notely",
