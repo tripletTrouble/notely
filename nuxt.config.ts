@@ -13,19 +13,8 @@ export default defineNuxtConfig({
       navigateFallbackAllowlist: [/^\/$/, /^\/.+/],
       runtimeCaching: [
         {
-          urlPattern: ({ request }) => request.mode === "navigate",
-          handler: "NetworkFirst",
-          options: {
-            cacheName: "pages-cache",
-          },
-        },
-        {
-          urlPattern: ({ request }) =>
-            ["script", "style", "worker"].includes(request.destination),
+          urlPattern: /.*/,
           handler: "CacheFirst",
-          options: {
-            cacheName: "assets",
-          },
         },
       ],
     },
