@@ -11,6 +11,11 @@ export default defineNuxtConfig({
   css: ['@/assets/css/main.css'],
   pwa: {
     registerType: 'autoUpdate',
+    workbox: {
+      cleanupOutdatedCaches: true,
+      globPatterns: ['**/*.{js,css,html,png,svg,webp}'],
+      navigateFallback: '/'
+    },
     manifest: {
       name: 'Notely',
       short_name: 'Notely',
@@ -33,6 +38,6 @@ export default defineNuxtConfig({
         }
       ]
     },
-    includeAssets: ['notely.webp']
+    includeAssets: ['notely.webp'],
   }
 })
