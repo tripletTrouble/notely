@@ -6,12 +6,14 @@ useHead({
   ],
   link: [
     { rel: 'icon', type: 'image/webp', href: '/notely.webp' },
+    { rel: 'apple-touch-icon', type: 'image/webp', href: '/apple-touch-icon.webp' },
   ],
 })
 const toaster: { position: "top-right" } = { position: 'top-right' }
 </script>
 
 <template>
+  <NuxtPwaManifest/>
   <UApp :toaster="toaster">
     <NuxtLayout>
       <NuxtPage/>

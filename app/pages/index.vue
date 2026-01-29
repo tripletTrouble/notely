@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useObservable } from '@vueuse/rxjs';
 import { from } from 'rxjs';
-import { liveQuery } from 'dexie';
+import Dexie from 'dexie';
 
 const { db } = useDb();
-const totalIncome = useObservable(from(liveQuery(async () => {
+const totalIncome = useObservable(from(Dexie.liveQuery(async () => {
   const income = await db.transactions.where('type').equals('1').toArray();
   return income.reduce((sum, trx) => sum + Number(trx.amount), 0);
 })));
-const totalExpense = useObservable(from(liveQuery(async () => {
+const totalExpense = useObservable(from(Dexie.liveQuery(async () => {
   const income = await db.transactions.where('type').equals('2').toArray();
   return income.reduce((sum, trx) => sum + Number(trx.amount), 0);
 })));

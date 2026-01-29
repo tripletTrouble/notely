@@ -1,21 +1,21 @@
 <script setup lang="ts">
 import { useObservable } from '@vueuse/rxjs';
 import { from } from 'rxjs';
-import { liveQuery } from 'dexie';
+import Dexie from 'dexie';
 
 const { db } = useDb();
 const isOpen = useState<boolean>('transaction-dialog-open', () => false);
-const totalTransactions = useObservable(from(liveQuery(async () => {
+const totalTransactions = useObservable(from(Dexie.liveQuery(async () => {
   return db.transactions.count();
 })));
 const totalPage = computed(() => Math.ceil((totalTransactions.value || 0) / 5));
 const currentPage = useState<number>('transaction-current-page', () => 1);
-let transactions = useObservable(from(liveQuery(() => db.transactions.offset((currentPage.value - 1) * 5).limit(5).toArray())));
+let transactions = useObservable(from(Dexie.liveQuery(() => db.transactions.offset((currentPage.value - 1) * 5).limit(5).toArray())));
 
 
 watch(currentPage, (newValue) => {
   // Trigger re-fetching transactions when the current page changes
-  transactions = useObservable(from(liveQuery(() => db.transactions.offset((newValue - 1) * 5).limit(5).toArray())));
+  transactions = useObservable(from(Dexie.liveQuery(() => db.transactions.offset((newValue - 1) * 5).limit(5).toArray())));
 });
 </script>
 
