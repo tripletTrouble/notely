@@ -12,10 +12,6 @@ useHead({
   ],
 })
 const toaster: { position: "top-right" } = { position: 'top-right' };
-
-onMounted(() => {
-  console.log('PWA is enabled:', $pwa);
-});
 </script>
 
 <template>
@@ -24,5 +20,6 @@ onMounted(() => {
     <NuxtLayout>
       <NuxtPage/>
     </NuxtLayout>
+    <AppConfirmation />
   </UApp>
 </template>

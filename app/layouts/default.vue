@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui';
-import appLogo from '@/assets/img/notely.webp';
 
 const props = useAttrs();
 const mainMenu: NavigationMenuItem[] = [
@@ -22,7 +21,7 @@ const mainMenu: NavigationMenuItem[] = [
     <UDashboardSidebar :collapsible="true" :resizable="true">
       <template #header="{collapsed}">
         <div class="flex items-center gap-2">
-          <NuxtImg :src="appLogo" class="size-10" />
+          <NuxtImg src="/notely.webp" class="size-10" />
           <p class="font-bold">Notely</p>
         </div>
       </template>
