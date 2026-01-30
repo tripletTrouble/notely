@@ -33,30 +33,9 @@ useHead({
         icon: 'size-10',
       }" />
     <div class="grid space-y-4">
-      <UCard>
-        <template #header>
-          <p class="font-bold text-lg">Total Pemasukan</p>
-        </template>
-        <template #default>
-          <p class="font-bold text-xl">{{ Number(totalIncome || 0).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }) }}</p>
-        </template>
-      </UCard>
-      <UCard>
-        <template #header>
-          <p class="font-bold text-lg">Total Pengeluaran</p>
-        </template>
-        <template #default>
-          <p class="font-bold text-xl">{{ Number(totalExpense || 0).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }) }}</p>
-        </template>
-      </UCard>
-      <UCard>
-        <template #header>
-          <p class="font-bold text-lg">Saldo saat ini</p>
-        </template>
-        <template #default>
-          <p class="font-bold text-xl">{{ Number(saldo || 0).toLocaleString('id-ID', { style: 'currency', currency: 'IDR' }) }}</p>
-        </template>
-      </UCard>
+      <DashboardCard title="Total Pemasukan" :amount="Number(totalIncome)" icon="i-lucide-banknote" color="success" />
+      <DashboardCard title="Total Pengeluaran" :amount="Number(totalExpense)" icon="i-lucide-notepad-text" color="error" />
+      <DashboardCard title="Saldo saat ini" :amount="Number(saldo)" icon="i-lucide-wallet" color="info" />
     </div>
   </NuxtLayout>
 </template>
